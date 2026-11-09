@@ -10,6 +10,7 @@ use Omniplay\Model\GameRef;
 use Omniplay\Model\ImageKind;
 use Omniplay\Model\Platform;
 use Omniplay\Model\Query;
+use Omniplay\SearchInterface;
 use Omniplay\Testing\RecordedHttpClient;
 use PHPUnit\Framework\TestCase;
 
@@ -68,7 +69,9 @@ final class IgdbProviderTest extends TestCase
         });
 
         try {
-            (new IgdbFactory($http))->create(['client_id' => 'not-a-real-client-id', 'client_secret' => 'not-a-real-client-secret'])->search(new Query('portal'));
+            $provider = (new IgdbFactory($http))->create(['client_id' => 'not-a-real-client-id', 'client_secret' => 'not-a-real-client-secret']);
+            self::assertInstanceOf(SearchInterface::class, $provider);
+            $provider->search(new Query('portal'));
             self::fail('no exception');
         } catch (\Omniplay\Exception\UnreachableException $e) {
             self::assertStringNotContainsString('not-a-real-client-secret', $e->getMessage());
