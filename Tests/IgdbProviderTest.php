@@ -1,16 +1,16 @@
 <?php
 
-namespace Omnigame\Igdb\Tests;
+namespace Omniplay\Igdb\Tests;
 
-use Omnigame\Exception\NotSupportedException;
-use Omnigame\Igdb\IgdbFactory;
-use Omnigame\Igdb\IgdbProvider;
-use Omnigame\Model\Game;
-use Omnigame\Model\GameRef;
-use Omnigame\Model\ImageKind;
-use Omnigame\Model\Platform;
-use Omnigame\Model\Query;
-use Omnigame\Testing\RecordedHttpClient;
+use Omniplay\Exception\NotSupportedException;
+use Omniplay\Igdb\IgdbFactory;
+use Omniplay\Igdb\IgdbProvider;
+use Omniplay\Model\Game;
+use Omniplay\Model\GameRef;
+use Omniplay\Model\ImageKind;
+use Omniplay\Model\Platform;
+use Omniplay\Model\Query;
+use Omniplay\Testing\RecordedHttpClient;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -70,7 +70,7 @@ final class IgdbProviderTest extends TestCase
         try {
             (new IgdbFactory($http))->create(['client_id' => 'not-a-real-client-id', 'client_secret' => 'not-a-real-client-secret'])->search(new Query('portal'));
             self::fail('no exception');
-        } catch (\Omnigame\Exception\UnreachableException $e) {
+        } catch (\Omniplay\Exception\UnreachableException $e) {
             self::assertStringNotContainsString('not-a-real-client-secret', $e->getMessage());
             self::assertStringContainsString('POST /oauth2/token', $e->getMessage());
         }

@@ -1,11 +1,11 @@
 <?php
 
-namespace Omnigame\Igdb;
+namespace Omniplay\Igdb;
 
-use Omnigame\Config;
-use Omnigame\Http\JsonClient;
-use Omnigame\ProviderFactory;
-use Omnigame\ProviderInterface;
+use Omniplay\Config;
+use Omniplay\Http\JsonClient;
+use Omniplay\ProviderFactory;
+use Omniplay\ProviderInterface;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
@@ -19,9 +19,9 @@ final class IgdbFactory extends ProviderFactory
     protected function populate(Config $c): void
     {
         $c->defaults([
-            'omnigame.factory_name' => 'igdb',
-            'omnigame.factory_title' => 'IGDB',
-            'omnigame.required_options' => ['client_id', 'client_secret'],
+            'omniplay.factory_name' => 'igdb',
+            'omniplay.factory_title' => 'IGDB',
+            'omniplay.required_options' => ['client_id', 'client_secret'],
             'api' => 'https://api.igdb.com/v4',
             'token_url' => 'https://id.twitch.tv/oauth2/token',
             'images' => 'https://images.igdb.com/igdb/image/upload',

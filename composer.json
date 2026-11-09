@@ -1,7 +1,7 @@
 {
-    "name": "omnigame/igdb",
+    "name": "omniplay/igdb",
     "type": "library",
-    "description": "Omnigame's IGDB, under any PHP host: Twitch's games database through Apicalypse queries - search, a game's record by its IGDB, Steam or GOG number with its studios, platforms, cover and screenshots, score and identifiers on the stores; Twitch's application token got and renewed by itself.",
+    "description": "Omniplay's IGDB, under any PHP host: Twitch's games database through Apicalypse queries - search, a game's record by its IGDB, Steam or GOG number with its studios, platforms, cover and screenshots, score and identifiers on the stores; Twitch's application token got and renewed by itself.",
     "keywords": [
         "igdb",
         "twitch",
@@ -10,9 +10,9 @@
         "database",
         "apicalypse",
         "framework-agnostic",
-        "omnigame"
+        "omniplay"
     ],
-    "homepage": "https://github.com/glitchr-omnisense/omnigame-igdb",
+    "homepage": "https://github.com/glitchr-omnisense/omniplay-igdb",
     "license": "MIT",
     "authors": [
         {
@@ -22,7 +22,7 @@
     ],
     "require": {
         "php": ">=8.2",
-        "omnisense/omnigame": "^1.0@dev",
+        "omnisense/omniplay": "^1.0@dev",
         "symfony/http-client": "^6.4|^7.0|^8.0"
     },
     "require-dev": {
@@ -31,7 +31,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Omnigame\\Igdb\\": ""
+            "Omniplay\\Igdb\\": ""
         },
         "exclude-from-classmap": [
             "/Tests/"
@@ -39,7 +39,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Omnigame\\Igdb\\Tests\\": "Tests/"
+            "Omniplay\\Igdb\\Tests\\": "Tests/"
         }
     },
     "extra": {

@@ -1,24 +1,24 @@
 <?php
 
-namespace Omnigame\Igdb;
+namespace Omniplay\Igdb;
 
-use Omnigame\Capabilities;
-use Omnigame\CatalogueInterface;
-use Omnigame\Exception\NotSupportedException;
-use Omnigame\Exception\ProviderException;
-use Omnigame\Http\Data;
-use Omnigame\Http\JsonClient;
-use Omnigame\Model\Game;
-use Omnigame\Model\GameRef;
-use Omnigame\Model\Identifiers;
-use Omnigame\Model\Image;
-use Omnigame\Model\ImageKind;
-use Omnigame\Model\Platform;
-use Omnigame\Model\Query;
-use Omnigame\Model\Rating;
-use Omnigame\Model\Scheme;
-use Omnigame\ProviderInterface;
-use Omnigame\SearchInterface;
+use Omniplay\Capabilities;
+use Omniplay\CatalogueInterface;
+use Omniplay\Exception\NotSupportedException;
+use Omniplay\Exception\ProviderException;
+use Omniplay\Http\Data;
+use Omniplay\Http\JsonClient;
+use Omniplay\Model\Game;
+use Omniplay\Model\GameRef;
+use Omniplay\Model\Identifiers;
+use Omniplay\Model\Image;
+use Omniplay\Model\ImageKind;
+use Omniplay\Model\Platform;
+use Omniplay\Model\Query;
+use Omniplay\Model\Rating;
+use Omniplay\Model\Scheme;
+use Omniplay\ProviderInterface;
+use Omniplay\SearchInterface;
 
 /**
  * IGDB, Twitch's games database: an application token got from Twitch with

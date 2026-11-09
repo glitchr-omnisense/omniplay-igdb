@@ -1,6 +1,6 @@
-# omnigame/igdb
+# omniplay/igdb
 
-IGDB, Twitch's games database, for [omnisense/omnigame](https://github.com/glitchr-omnisense/omnigame):
+IGDB, Twitch's games database, for [omnisense/omniplay](https://github.com/glitchr-omnisense/omniplay):
 search and a game's record through Apicalypse queries, a game found by its IGDB number or by its
 Steam or GOG number, its studios, platforms, genres, themes, cover and screenshots, its score, and
 its identifiers on Steam, GOG, Epic and itch.io. The provider calls:
@@ -18,10 +18,10 @@ Pictures come from `https://images.igdb.com/igdb/image/upload`.
 ## Installation
 
 ```sh
-composer require omnigame/igdb
+composer require omniplay/igdb
 ```
 
-Requires PHP 8.2, `omnisense/omnigame` (1.x) and `symfony/http-client` (6.4, 7 or 8).
+Requires PHP 8.2, `omnisense/omniplay` (1.x) and `symfony/http-client` (6.4, 7 or 8).
 
 ## Credentials
 
@@ -79,9 +79,9 @@ No price. A Steam or GOG number not found in `external_games` is `null`.
 
 require __DIR__.'/vendor/autoload.php';
 
-use Omnigame\Igdb\IgdbFactory;
-use Omnigame\Model\GameRef;
-use Omnigame\Model\Scheme;
+use Omniplay\Igdb\IgdbFactory;
+use Omniplay\Model\GameRef;
+use Omniplay\Model\Scheme;
 use Symfony\Component\HttpClient\HttpClient;
 
 $igdb = (new IgdbFactory(HttpClient::create()))->create(['client_id' => getenv('TWITCH_CLIENT_ID'), 'client_secret' => getenv('TWITCH_CLIENT_SECRET')]);
@@ -111,11 +111,11 @@ In Symfony:
 
 ```yaml
 services:
-    Omnigame\Igdb\IgdbFactory:
+    Omniplay\Igdb\IgdbFactory:
         arguments: ['@http_client']
-    Omnigame\Registry:
+    Omniplay\Registry:
         arguments:
-            $factories: ['@Omnigame\Igdb\IgdbFactory']
+            $factories: ['@Omniplay\Igdb\IgdbFactory']
             $config:
                 igdb: { factory: igdb, options: { client_id: '%env(TWITCH_CLIENT_ID)%', client_secret: '%env(TWITCH_CLIENT_SECRET)%' } }
 ```

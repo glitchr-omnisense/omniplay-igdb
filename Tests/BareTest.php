@@ -1,11 +1,11 @@
 <?php
 
-namespace Omnigame\Igdb\Tests;
+namespace Omniplay\Igdb\Tests;
 
-use Omnigame\Igdb\IgdbProvider;
-use Omnigame\Testing\BareTestCase;
+use Omniplay\Igdb\IgdbProvider;
+use Omniplay\Testing\BareTestCase;
 
-/** omnigame/igdb's classes load with omnisense/omnigame and Symfony's HTTP client contracts alone. */
+/** omniplay/igdb's classes load with omnisense/omniplay and Symfony's HTTP client contracts alone. */
 final class BareTest extends BareTestCase
 {
     protected static function entryClass(): string
