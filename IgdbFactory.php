@@ -31,7 +31,7 @@ final class IgdbFactory extends ProviderFactory
     protected function build(Config $c): ProviderInterface
     {
         return new IgdbProvider(
-            new JsonClient($this->http ?? HttpClient::create(['timeout' => 20]), 'IGDB', ['Accept' => 'application/json']),
+            new JsonClient($this->http ?? HttpClient::create(['timeout' => 20]), 'IGDB', ['Accept' => 'application/json'], $c->backoff()),
             (string) $c->string('client_id'),
             (string) $c->string('client_secret'),
             rtrim((string) $c->string('api'), '/'),

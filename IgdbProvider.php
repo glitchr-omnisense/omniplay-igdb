@@ -19,6 +19,8 @@ use Omniplay\Model\Rating;
 use Omniplay\Model\Scheme;
 use Omniplay\ProviderInterface;
 use Omniplay\SearchInterface;
+use Omnisense\Contracts\Policy\DeclaresUsagePolicyInterface;
+use Omnisense\Contracts\Policy\UsagePolicy;
 
 /**
  * IGDB, Twitch's games database: an application token got from Twitch with
@@ -26,8 +28,13 @@ use Omniplay\SearchInterface;
  * record by Apicalypse queries; a game found by its IGDB number or by its
  * Steam or GOG number (external_games); its identifiers on the stores.
  */
-final class IgdbProvider implements ProviderInterface, SearchInterface, CatalogueInterface
+final class IgdbProvider implements ProviderInterface, SearchInterface, CatalogueInterface, DeclaresUsagePolicyInterface
 {
+    /** IGDB's usage policy, as its terms read on the day it says (provenance.verifiedAt). */
+    public const POLICY = __DIR__.'/policy.json';
+
+    private static ?UsagePolicy $policy = null;
+
     /** IGDB's external game sources: the store each number belongs to. */
     public const SOURCES = [1 => 'steam', 5 => 'gog', 26 => 'epic', 30 => 'itch'];
 
@@ -56,6 +63,11 @@ final class IgdbProvider implements ProviderInterface, SearchInterface, Catalogu
         return 'IGDB';
     }
 
+    public function usagePolicy(): UsagePolicy
+    {
+        return self::$policy ??= UsagePolicy::fromFile(self::POLICY);
+    }
+
     public function capabilities(): Capabilities
     {
         return new Capabilities(
@@ -64,6 +76,7 @@ final class IgdbProvider implements ProviderInterface, SearchInterface, Catalogu
             lookupBy: [Scheme::Igdb, Scheme::Steam, Scheme::Gog],
             attribution: 'Data from IGDB.com',
             terms: ['https://api-docs.igdb.com/#about', 'https://www.twitch.tv/p/legal/developer-agreement/'],
+            policy: $this->usagePolicy(),
         );
     }
 

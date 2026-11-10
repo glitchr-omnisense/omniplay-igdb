@@ -38,6 +38,10 @@ it reaches. The MIT licence covers this code only and grants no right to the ser
 whoever runs it complies with the terms above and obtains what they require. The authors publish
 it free of charge, make no commercial use of it and accept no liability for its use.
 
+## Usage policy
+
+The package declares its usage policy as data, in [policy.json](policy.json) (omnisense/contracts' schema). 4 requests a second, per key, as api-docs.igdb.com says (read on 2026-11-10), and at most 8 open requests (in the notes). Commercial use is under contract: monetized products go through IGDB's partnership, and Twitch's Developer Agreement forbids monetizing its data without permission. Storing and caching are allowed (IGDB's FAQ), redistribution is forbidden, and IGDB.com is credited. Through omniplay's registry, the fifth call within a second is refused before it is made (`UsageLimitReachedException`). A 429 and its `Retry-After` hold every call until the wait is over. A site may lower the limit, never raise it.
+
 ## Licence
 
 MIT.

@@ -152,3 +152,7 @@ An independent, unofficial client, affiliated with IGDB or Twitch in no way. Who
 complies with [Twitch's developer agreement](https://www.twitch.tv/p/legal/developer-agreement/)
 and IGDB's terms ([api-docs.igdb.com](https://api-docs.igdb.com/#about)): 4 requests a second,
 credit to IGDB.com. See the README.
+
+## Usage policy
+
+The package declares its usage policy as data, in [policy.json](../policy.json) (omnisense/contracts' schema). 4 requests a second, per key, as api-docs.igdb.com says (read on 2026-11-10), and at most 8 open requests (in the notes). Commercial use is under contract: monetized products go through IGDB's partnership, and Twitch's Developer Agreement forbids monetizing its data without permission. Storing and caching are allowed (IGDB's FAQ), redistribution is forbidden, and IGDB.com is credited. Through omniplay's registry, the fifth call within a second is refused before it is made (`UsageLimitReachedException`). A 429 and its `Retry-After` hold every call until the wait is over. A site may lower the limit, never raise it. `IgdbProvider::usagePolicy()` reads it, and its Capabilities carry it (`policy()`).

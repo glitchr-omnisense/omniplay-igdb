@@ -1,0 +1,47 @@
+{
+    "$schema": "https://github.com/glitchr-omnisense/contracts/blob/1.x/resources/usage-policy.schema.json",
+    "provider": "igdb",
+    "rateLimits": [
+        {
+            "max": 4,
+            "window": "second",
+            "scope": "key",
+            "operations": [],
+            "note": "\"There is a rate limit of 4 requests per second\", answered by 429 beyond it; and at most 8 open requests at any moment (no concurrency field in the schema). Twitch's application token, asked of id.twitch.tv, is one request more when it is renewed."
+        }
+    ],
+    "rights": {
+        "commercial": "contract",
+        "openSourceRequired": null,
+        "caching": {
+            "permission": "allowed",
+            "maxTtl": null
+        },
+        "storage": "allowed",
+        "redistribution": "forbidden",
+        "attribution": {
+            "required": true,
+            "text": "Data from IGDB.com",
+            "url": "https://www.igdb.com",
+            "where": [
+                "display"
+            ]
+        },
+        "licence": null
+    },
+    "requirements": {
+        "key": true,
+        "userAgent": {
+            "required": false,
+            "pattern": null
+        }
+    },
+    "provenance": {
+        "terms": "https://api-docs.igdb.com/#about",
+        "policy": "https://www.twitch.tv/p/legal/developer-agreement/",
+        "verifiedAt": "2026-11-10",
+        "declaredBy": "maintainer",
+        "contact": "partner@igdb.com",
+        "notes": "IGDB is free for non-commercial use under the Twitch Developer Services Agreement; its FAQ says the API is free for commercial projects too, but monetized products go through its commercial partnership (partner@igdb.com), and the Agreement forbids selling, licensing or monetizing Twitch Data without Twitch's written permission: commercial use is declared under contract. Storage and caching: IGDB's FAQ \"we prefer if you store and serve the data to your end users\" (read as IGDB's written authorization; the Agreement otherwise allows a 24-hour cache only). Re-syndication and redistribution of the data as the API gives it are prohibited (the Agreement). Attribution visible to the users, in a static place (not a changelog), to IGDB.com. Twitch client credentials (client id and secret) give the application token; never in a browser."
+    }
+}
