@@ -7,9 +7,10 @@
             "window": "second",
             "scope": "key",
             "operations": [],
-            "note": "\"There is a rate limit of 4 requests per second\", answered by 429 beyond it; and at most 8 open requests at any moment (no concurrency field in the schema). Twitch's application token, asked of id.twitch.tv, is one request more when it is renewed."
+            "note": "\"There is a rate limit of 4 requests per second\", answered by 429 beyond it; and \"up to 8 open requests at any moment in time\" (concurrency). Twitch's application token, asked of id.twitch.tv, is one request more when it is renewed."
         }
     ],
+    "concurrency": 8,
     "rights": {
         "commercial": "contract",
         "openSourceRequired": null,

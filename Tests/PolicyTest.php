@@ -24,6 +24,7 @@ final class PolicyTest extends TestCase
 
         self::assertSame('igdb', $policy->provider);
         self::assertSame(['4/second/key/*'], null === $policy->rateLimits ? null : array_map(static fn (RateLimit $limit) => $limit->id(), $policy->rateLimits));
+        self::assertSame(8, $policy->concurrency, 'at most 8 open requests');
         self::assertSame(Permission::Contract, $policy->rights->commercial);
         self::assertSame(true, $policy->rights->attribution->required);
         self::assertSame(true, $policy->requirements->key);
@@ -68,6 +69,14 @@ final class PolicyTest extends TestCase
             self::assertGreaterThanOrEqual(29, $e->retryAfter);
         }
         self::assertCount($made, $http->requests, 'the wait held the next request back');
+    }
+
+    public function testASiteMayLowerTheConcurrencyNeverRaiseIt(): void
+    {
+        self::assertSame(2, self::registry(self::answering(), ['concurrency' => 2])->policy('igdb')->concurrency);
+
+        $this->expectException(InvalidPolicyException::class);
+        self::registry(self::answering(), ['concurrency' => 16])->catalogue('igdb');
     }
 
     public function testASiteCannotRaiseTheLimit(): void
