@@ -15,6 +15,18 @@ $portal = $igdb->game(GameRef::steam(620));
 Options: `client_id` and `client_secret` (required: a Twitch application's), `api`,
 `token_url`, `images`.
 
+## Install
+
+```sh
+composer require omniplay/igdb
+```
+
+It requires `omnisense/omniplay` `^1.0`, installed with it. A real call needs: **Twitch client
+credentials** (IGDB is Twitch's: a Twitch application's client id and secret). With no account, its
+tests run on recorded answers (a `MockHttpClient`), and
+[omnisense/omniplay](https://github.com/glitchr-omnisense/omniplay#install-and-a-first-call)'s
+README has a first call that runs without one.
+
 ## IGDB's terms
 
 IGDB is used under [Twitch's developer agreement](https://www.twitch.tv/p/legal/developer-agreement/)
